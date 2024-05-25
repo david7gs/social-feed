@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+<main>
+  <section class="hero">
+    <div class="container-fluid bg-grey">
+      <div class="row">
+  
+        <div class="jumbotron text-center">
+          <h1>Blog Post Edit</h1> 
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="blog-entry">
+    <div class="container container-fluid">
+      <div class="row flex-center">
+        <div>
+          <h2>
+            <span class="glyphicon glyphicon-arrow-down"></span>
+            Edit your blog post below!
+            <span class="glyphicon glyphicon-arrow-down"></span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="row flex-center">
+
+        <form action="/update" method="POST">
+          <textarea class="form-field" type="text" name="blogPost" rows="4" cols="50">this is some test text</textarea>
+          <div class="text-area">
+            <% if (locals.data) { %>
+              date object<br>
+              <%= data %>
+            <% } %>  
+          </div>
+          <button class="btn btn-primary">Update</button> 
+        </form>
+      </div>
+    </div>
+  </section>
+  
+
+</main>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,65 @@
+
+.jumbotron h1 {
+  margin: 30px 0 0 0;
+}
+
+.container-fluid .row.flex-center {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+.container-fluid .row.flex-center p {
+  width: 385px;
+}
+
+form input {
+ display: flex;
+ margin: 20px 0 0 0;
+ padding-left: 8px; 
+}
+
+form.form-field {
+  margin: 0;
+}
+
+form .btn {
+  margin-top: 20px;
+}
+
+.text-area {
+  display: none;
+  color: red;
+  padding-left: 10px;
+  /* margin-top: 0; */
+  font-size: 1rem;
+  position: absolute;
+}
+
+textarea.form-field {
+  margin-bottom: -5px;
+}
+
+.text-area.show-error {
+  display: block;
+}
+
+.blog-posts .container {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: solid 2px steelblue;
+}
+
+.container .blog-list li {
+  display: flex;
+  flex-flow: row;
+  margin: 25px;
+  padding: 30px;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+li .post-container {
+
+}

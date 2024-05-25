@@ -1,0 +1,91 @@
+<%- include("partials/header.ejs") %>
+
+<main>
+  <section class="hero">
+    <div class="container-fluid bg-grey">
+      <div class="row">
+  
+        <div class="jumbotron text-center">
+          <h1>David's Blog</h1> 
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="blog-entry">
+    <div class="container container-fluid">
+      <div class="row flex-center">
+        <p>
+          Thanks for visiting my blog POC. There is no DB attached (yet) so the blog is session based.
+        </p>
+        <p>
+          There is error handling and script tags & most special characters cannot be passed to the backend.
+        </p>
+        <p>
+          Stack: Express, EJS, Node
+        </p>
+        <p>view the code on my github repo <a href="#">github</a></p>
+        <div>
+          <h2>
+            <span class="glyphicon glyphicon-arrow-down"></span>
+            Enter your blog post below!
+            <span class="glyphicon glyphicon-arrow-down"></span>
+          </h2>
+        </div>
+      </div>
+      <div class="row flex-center">
+        <form action="/blog" method="POST">
+          <textarea class="form-field" placeholder="Blog post*" type="text" name="blogPost" rows="4" cols="50"></textarea>
+          <div class="text-area">Please enter your blog post</div>
+          <input class="form-field" type="text" name="fName" placeholder="First Name*">
+          <div class="text-area">Your first name is required</div>
+          <input class="form-field" type="text" name="lName" placeholder="Last Name*">
+          <div class="text-area">Your last name is required</div>
+          <button class="btn btn-primary">OK</button> 
+          <!-- <input type="hidden" class="btn btn-primary" type="submit" value="OK"> -->
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="blog-posts">
+    <div class="container container-fluid">
+      <div class="row">
+        <ul class="blog-list">
+          <% if (locals.data) { %>
+          <% data.forEach((post) => { %>
+            <% if (!post.errorCheck) { %>
+              <li>
+                <div class="post-container col-sm-8">
+                  <%= post.post %>
+                </div>
+                <div class="fName-container col-sm-2">
+                  <span class="name first-name">
+                    <%= post.fName %>
+                  </span>
+                  <span class="name last-name">
+                    <%= post.lName %>
+                  </span> 
+                </div>
+                <div class="time-container col-sm-2">
+                  <%= post.time %>
+                  <form action="/edit" method="POST">
+                    <input type="hidden" id="postId" name="postId" value="<%= post.time %>">
+                    <input class="btn btn-primary" type="submit" value="Edit">
+                  </form>
+                  <form action="/delete" method="POST">
+                    <input type="hidden" id="postId" name="postId" value="<%= post.time %>">
+                    <input class="btn btn-primary" type="submit" value="Delete">
+                  </form>
+                </div>
+              </li>     
+              <% } %>       
+            <% }); %>
+          <% }; %>
+
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<%- include("partials/footer.ejs") %>
